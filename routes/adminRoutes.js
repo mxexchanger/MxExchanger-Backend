@@ -25,7 +25,7 @@ router.get('/admin/all/deposits', isAuthenticatedUser, authorizeRoles('admin'), 
 router.delete('/admin/all/withdraws/:id', isAuthenticatedUser, authorizeRoles('admin'), isAuthenticatedAdmin, deleteWithdraw)
 router.delete('/admin/all/deposits/:id', isAuthenticatedUser, authorizeRoles('admin'), isAuthenticatedAdmin, deleteDeposit)
 router.get('/admin/all/messages', isAuthenticatedUser, authorizeRoles('admin'), isAuthenticatedAdmin, messaages)
-router.get('/admin/accounts', isAuthenticatedUser, authorizeRoles('admin'), isAuthenticatedAdmin, accounts)
+router.get('/admin/accounts', isAuthenticatedUser, accounts)
 router.post('/admin/opration', isAuthenticatedUser, authorizeRoles('admin'), isAuthenticatedAdmin, AccountsOpration)
 
 
