@@ -1,41 +1,36 @@
-import express from 'express'
-import userRouter from './routes/userRoutes.js'
-import adminRoute from './routes/adminRoutes.js'
-import cookieParser from 'cookie-parser'
-import { errorMiddleware } from './middlewares/error.js'
-import cors from 'cors'
+import express from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
+import userRouter from './routes/userRoutes.js';
+import adminRoute from './routes/adminRoutes.js';
+import { errorMiddleware } from './middlewares/error.js';
 
-const app = express()
+const app = express();
 
-
-
-// CORS configuration
+// ✅ FINAL CORS CONFIG
 const corsOptions = {
-    origin: 'mxexchanger.com', // your frontend URL (Vite, React, etc.)
+    origin: ['https://mxexchanger.com', 'http://localhost:5173'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true, // allow cookies or auth headers
+    credentials: true, // ✅ Enable cookies or auth headers
 };
 
-
-
-// middlewares
+// ✅ MIDDLEWARES
 app.use(cors(corsOptions));
-app.use(express.json())
-app.use(cookieParser())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
 
-// routes
-app.use('/api/v1/', userRouter)
-app.use('/api/v1/', adminRoute)
+// ✅ ROUTES
+app.use('/api/v1/', userRouter);
+app.use('/api/v1/', adminRoute);
 
-
+// ✅ DEFAULT ROOT TEST ROUTE
 app.get('/', (req, res) => {
-    res.send("Server is Working")
-})
+    res.send('Server is Working');
+});
 
-
-app.use(errorMiddleware)
-
+// ✅ GLOBAL ERROR HANDLER
+app.use(errorMiddleware);
 
 export default app;
