@@ -467,7 +467,6 @@ export const update = asyncHandler(async (req, res, next) => {
     }
 
     user.name = name;
-    user.email = email;
     user.country = country;
 
     await user.save();
