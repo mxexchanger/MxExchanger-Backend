@@ -655,14 +655,15 @@ export const isLoginUser = asyncHandler(async (req, res, next) => {
 
 
 export const logout = (req, res) => {
-    res.clearCookie('token', {
+    res.clearCookie("token", {
         httpOnly: true,
-        sameSite: 'none',
-        secure: true
+        secure: true,
+        sameSite: "none",
+        path: "/" // must match the one in sendToken
     });
 
-    return res.status(200).json({
+    res.status(200).json({
         success: true,
-        message: 'Logged out successfully'
+        message: "Logged out successfully"
     });
 };

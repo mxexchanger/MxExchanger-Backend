@@ -1,16 +1,19 @@
 const sendToken = (user, statusCode, res) => {
     const token = user.getJWTToken();
 
-    const expires = new Date(Date.now() + 4 * 24 * 60 * 60 * 1000).toUTCString();
-
-    res.setHeader('Set-Cookie', `token=${token}; Expires=${expires}; HttpOnly; Secure; SameSite=None; Partitioned`);
+    res.cookie("token", token, {
+        httpOnly: true,          // JavaScript se access nahi ho sakti
+        secure: true,            // HTTPS ke liye
+        sameSite: "none",        // Cross-site requests allow
+        path: "/",               // Sab routes me available
+        expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000) // 4 days
+    });
 
     res.status(statusCode).json({
         success: true,
         user,
-        token,
+        token
     });
 };
 
-
-export default sendToken
+export default sendToken;
