@@ -8,7 +8,6 @@ const sendToken = (user, statusCode, res) => {
         sameSite: 'None',        // Cross-site allow
         path: '/',               // Har route ke liye
         expires: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000), // 4 din
-        domain: '.mxexchanger.com', // subdomains share kar sake
     };
 
     res
