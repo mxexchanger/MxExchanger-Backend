@@ -664,6 +664,7 @@ export const logout = (req, res) => {
         path: '/' // Must match sendToken path
     };
 
+    req.user = null
     res.clearCookie('token', cookieOptions);
     res.status(200).json({
         success: true,
