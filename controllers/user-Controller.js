@@ -649,7 +649,6 @@ export const verifyOtp = asyncHandler(async (req, res, next) => {
 
 
 export const isLoginUser = asyncHandler(async (req, res, next) => {
-    console.log('yahan per aya ha ')
     res.json({ success: true, message: "User Login" })
 })
 
