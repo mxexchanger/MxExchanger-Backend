@@ -103,7 +103,8 @@ export const login = asyncHandler(async (req, res, next) => {
     if (!user) return next(new ErrorHandler("Invalid Email or Password", 401));
 
     const now = Date.now();
-    const attemptWindow = 24 * 60 * 60 * 1000; // 24 hours
+    const attemptWindow = 15 * 60 * 1000; // 15 minutes
+
 
     // Check if user is blocked
     if (user.loginAttemptTimestamp && now - user.loginAttemptTimestamp.getTime() < attemptWindow) {
