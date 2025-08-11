@@ -11,15 +11,12 @@ const app = express();
 // ✅ FINAL CORS CONFIG
 const corsOptions = {
     origin: ['https://mxexchanger.com', 'http://mxexchanger.com', 'http://localhost:5173'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true, // ✅ Enable cookies or auth headers
 };
 
 // ✅ MIDDLEWARES
-app.use(cors(corsOptions)); // ✅ Already applies to all requests
-
-// ✅ Handle preflight specifically for your APIs only (safer)
-app.options('/api/*', cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
