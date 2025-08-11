@@ -10,7 +10,7 @@ const app = express();
 
 // ✅ FINAL CORS CONFIG
 const corsOptions = {
-    origin: ['https://mxexchanger.com', 'http://localhost:5173'],
+    origin: ['https://mxexchanger.com', 'http://mxexchanger.com', 'http://localhost:5173'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true, // ✅ Enable cookies or auth headers
 };
