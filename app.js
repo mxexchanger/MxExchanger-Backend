@@ -15,13 +15,8 @@ const corsOptions = {
     credentials: true, // ✅ Enable cookies or auth headers
 };
 
-// ✅ USE CORS (must be at top)
-app.use(cors(corsOptions));
-
-// ✅ HANDLE PREFLIGHT (CORS OPTIONS requests) - THIS FIXES YOUR ERROR!
+// ✅ MIDDLEWARES
 app.options('*', cors(corsOptions));
-
-// ✅ PARSERS
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
